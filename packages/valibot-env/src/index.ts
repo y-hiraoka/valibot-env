@@ -32,7 +32,7 @@ type CreateEnvArgs<
     shared: SharedSchemaRecord;
   }>;
   values: Record<string, unknown>;
-  isPublic?: boolean;
+  isPrivate?: boolean;
 };
 
 type CreatedEnv<
@@ -62,7 +62,7 @@ export function createEnv<
     SharedSchemaRecord
   >,
 ): CreatedEnv<PublicSchemaRecord, PrivateSchemaRecord, SharedSchemaRecord> {
-  const isPublic = args.isPublic ?? typeof window !== "undefined";
+  const isPrivate = args.isPrivate ?? typeof window === "undefined";
   // const publicPrefix = args.publicPrefix ?? "";
   // const privatePrefix = args.privatePrefix ?? "";
 
@@ -80,7 +80,7 @@ export function createEnv<
     parsed[key] = v.parse(valischema as v.GenericSchema, args.values[key]);
   }
 
-  if (!isPublic) {
+  if (isPrivate) {
     for (const [key, valischema] of Object.entries(privateSchemaRecord)) {
       parsed[key] = v.parse(valischema as v.GenericSchema, args.values[key]);
     }
@@ -88,129 +88,3 @@ export function createEnv<
 
   return parsed;
 }
-
-const onlyPublicEnv = createEnv({
-  publicPrefix: "PUBLIC_",
-  schema: {
-    public: {
-      PUBLIC_HOGE: v.string(),
-    },
-  },
-  values: {
-    PUBLIC_HOGE: "foo",
-  },
-});
-
-onlyPublicEnv.PUBLIC_HOGE;
-
-const onlyPrivateEnv = createEnv({
-  publicPrefix: "PUBLIC_",
-  privatePrefix: "PRIVATE_",
-  schema: {
-    private: {
-      PRIVATE_HOGE: v.string(),
-    },
-  },
-  values: {
-    PRIVATE_HOGE: "foo",
-  },
-});
-
-onlyPrivateEnv.PRIVATE_HOGE;
-
-const sharedEnv = createEnv({
-  schema: {
-    shared: {
-      NODE_ENV: v.union([v.literal("development"), v.literal("production")]),
-    },
-  },
-  values: {
-    NODE_ENV: "development",
-  },
-});
-
-sharedEnv.NODE_ENV;
-
-const publicAndPrivateEnv = createEnv({
-  publicPrefix: "PUBLIC_",
-  privatePrefix: "PRIVATE_",
-  schema: {
-    public: {
-      PUBLIC_HOGE: v.string(),
-    },
-    private: {
-      PRIVATE_HOGE: v.string(),
-    },
-  },
-  values: {
-    PUBLIC_HOGE: "foo",
-    PRIVATE_HOGE: "foo",
-  },
-});
-
-publicAndPrivateEnv.PUBLIC_HOGE;
-publicAndPrivateEnv.PRIVATE_HOGE;
-
-const publicAndSharedEnv = createEnv({
-  publicPrefix: "PUBLIC_",
-  schema: {
-    public: {
-      PUBLIC_HOGE: v.string(),
-    },
-    shared: {
-      NODE_ENV: v.union([v.literal("development"), v.literal("production")]),
-    },
-  },
-  values: {
-    PUBLIC_HOGE: "foo",
-    NODE_ENV: "development",
-  },
-});
-
-publicAndSharedEnv.PUBLIC_HOGE;
-publicAndSharedEnv.NODE_ENV;
-
-const privateAndSharedEnv = createEnv({
-  privatePrefix: "PRIVATE_",
-  schema: {
-    private: {
-      PRIVATE_HOGE: v.string(),
-    },
-    shared: {
-      NODE_ENV: v.union([v.literal("development"), v.literal("production")]),
-    },
-  },
-  values: {
-    PRIVATE_HOGE: "foo",
-    NODE_ENV: "development",
-  },
-});
-
-privateAndSharedEnv.PRIVATE_HOGE;
-privateAndSharedEnv.NODE_ENV;
-
-const myenv = createEnv({
-  publicPrefix: "PUBLIC_",
-  privatePrefix: "PRIVATE_",
-  schema: {
-    private: {
-      PRIVATE_HOGE: v.string(),
-      PRIVATE_FUGA: v.string(),
-    },
-    public: {
-      PUBLIC_FUGA: v.string(),
-    },
-    shared: {
-      NODE_ENV: v.union([v.literal("development"), v.literal("production")]),
-    },
-  },
-  values: {
-    PRIVATE_HOGE: "foo",
-    PUBLIC_FUGA: "bar",
-    NODE_ENV: "development",
-  },
-});
-
-myenv.PUBLIC_FUGA;
-myenv.PRIVATE_HOGE;
-myenv.NODE_ENV;
