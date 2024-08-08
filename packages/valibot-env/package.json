@@ -1,6 +1,7 @@
 {
   "name": "valibot-env",
   "version": "0.0.0",
+  "type": "module",
   "description": "type-safe environment variables with valibot",
   "main": "dist/index.js",
   "exports": {
@@ -8,8 +9,8 @@
     "./nextjs": "./dist/nextjs.js"
   },
   "scripts": {
-    "build": "tsc --clean",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsup --clean",
+    "dev": "tsup --watch"
   },
   "keywords": [
     "env",
