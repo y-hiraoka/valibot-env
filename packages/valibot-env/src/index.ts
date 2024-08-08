@@ -3,7 +3,7 @@ import * as v from "valibot";
 type RequiredAtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
   U[keyof U];
 
-type SchemaRecord = Record<
+export type SchemaRecord = Record<
   string,
   v.BaseSchema<unknown, unknown, v.BaseIssue<unknown>>
 >;
@@ -17,7 +17,7 @@ type SchemaWithErrorMessages<
     : `TypeError: The schema key must start with ${Prefix}`;
 };
 
-type CreateEnvArgs<
+export type CreateEnvArgs<
   PublicPrefix extends string = "",
   PrivatePrefix extends string = "",
   PublicSchemaRecord extends SchemaRecord = {},

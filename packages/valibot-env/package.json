@@ -4,10 +4,11 @@
   "description": "type-safe environment variables with valibot",
   "main": "dist/index.js",
   "exports": {
-    ".": "./dist/index.js"
+    ".": "./dist/index.js",
+    "./nextjs": "./dist/nextjs.js"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --clean",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
