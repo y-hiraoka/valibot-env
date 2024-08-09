@@ -78,5 +78,20 @@ export function createEnv<
     } as SchemaRecord;
   }
 
-  return v.parse(v.object(schemaRecord), args.values) as any;
+  try {
+    return v.parse(v.object(schemaRecord), args.values) as any;
+  } catch (error) {
+    if (v.isValiError(error)) {
+      const invalidPaths = error.issues
+        .map((issue) => v.getDotPath(issue))
+        .join(", ");
+
+      throw new Error(
+        `[valibot-env] Invalid environment variable values detected. Please check the following variables: ${invalidPaths}`,
+        { cause: error },
+      );
+    }
+
+    throw error;
+  }
 }
