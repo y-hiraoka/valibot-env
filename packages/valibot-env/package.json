@@ -2,22 +2,27 @@
   "name": "valibot-env",
   "version": "0.0.0",
   "type": "module",
+  "author": "y-hiraoka",
+  "license": "MIT",
   "description": "type-safe environment variables with valibot",
-  "main": "dist/index.js",
-  "exports": {
-    ".": "./dist/index.js",
-    "./nextjs": "./dist/nextjs.js"
-  },
-  "scripts": {
-    "build": "tsup --clean",
-    "dev": "tsup --watch"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/y-hiraoka/valibot-env",
+    "directory": "packages/valibot-env"
   },
   "keywords": [
     "env",
     "valibot"
   ],
-  "author": "y-hiraoka",
-  "license": "MIT",
+  "scripts": {
+    "build": "tsup --clean",
+    "dev": "tsup --watch"
+  },
+  "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./nextjs": "./dist/nextjs.js"
+  },
   "peerDependencies": {
     "valibot": "^0.37.0"
   }
