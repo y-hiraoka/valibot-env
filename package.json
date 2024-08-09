@@ -1,5 +1,5 @@
 {
-  "name": "valibot-env",
+  "name": "@monorepo/valibot-env",
   "private": true,
   "scripts": {
     "build": "turbo build",
