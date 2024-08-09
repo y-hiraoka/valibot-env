@@ -9,7 +9,7 @@
     "test": "vitest",
     "changeset": "changeset",
     "prepublish": "turbo build --filter='./packages/*'",
-    "publish": "echo 'test publish'"
+    "publish": "changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.7",
