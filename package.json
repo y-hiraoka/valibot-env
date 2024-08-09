@@ -6,9 +6,11 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "test": "vitest"
+    "test": "vitest",
+    "changeset": "changeset"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.7",
     "prettier": "^3.2.5",
     "tsup": "^8.2.4",
     "turbo": "^2.0.12",

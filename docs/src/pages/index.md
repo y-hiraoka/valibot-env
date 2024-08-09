@@ -11,7 +11,7 @@ This library is framework-agnostic but provides a helper function for:
 To install valibot-env, run the following command:
 
 ```bash
-npm install valibot-env
+npm install valibot valibot-env
 ```
 
 ## Usage
