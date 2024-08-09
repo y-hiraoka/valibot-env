@@ -66,25 +66,17 @@ export function createEnv<
   // const publicPrefix = args.publicPrefix ?? "";
   // const privatePrefix = args.privatePrefix ?? "";
 
-  let parsed: any = {};
-
-  const publicSchemaRecord = args.schema.public ?? {};
-  const privateSchemaRecord = args.schema.private ?? {};
-  const sharedSchemaRecord = args.schema.shared ?? {};
-
-  for (const [key, valischema] of Object.entries(publicSchemaRecord)) {
-    parsed[key] = v.parse(valischema as v.GenericSchema, args.values[key]);
-  }
-
-  for (const [key, valischema] of Object.entries(sharedSchemaRecord)) {
-    parsed[key] = v.parse(valischema as v.GenericSchema, args.values[key]);
-  }
+  let schemaRecord = {
+    ...args.schema.public,
+    ...args.schema.shared,
+  } as SchemaRecord;
 
   if (isPrivate) {
-    for (const [key, valischema] of Object.entries(privateSchemaRecord)) {
-      parsed[key] = v.parse(valischema as v.GenericSchema, args.values[key]);
-    }
+    schemaRecord = {
+      ...schemaRecord,
+      ...args.schema.private,
+    } as SchemaRecord;
   }
 
-  return parsed;
+  return v.parse(v.object(schemaRecord), args.values) as any;
 }
