@@ -7,7 +7,9 @@
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "test": "vitest",
-    "changeset": "changeset"
+    "changeset": "changeset",
+    "prepublish": "turbo build --filter='./packages/*'",
+    "publish": "echo 'test publish'"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.7",
