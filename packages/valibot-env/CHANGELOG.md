@@ -1,5 +1,11 @@
 # valibot-env
 
+## 0.0.3
+
+### Patch Changes
+
+- 852543c: Display error messages individually
+
 ## 0.0.2
 
 ### Patch Changes
