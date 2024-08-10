@@ -4,10 +4,7 @@ import { InferGetStaticPropsType } from "next";
 
 export const getStaticProps = async () => {
   return {
-    props: {
-      API_URL: env.API_URL,
-      VERCEL_ENV: env.VERCEL_ENV,
-    },
+    props: env,
   };
 };
 

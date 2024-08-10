@@ -8,8 +8,8 @@ export const env = createEnv({
       NEXT_PUBLIC_SITE_NAME: v.string(),
     },
     private: {
-      API_URL: v.pipe(v.string(), v.url()),
-      API_KEY: v.string(),
+      DUMMY_API_URL: v.pipe(v.string(), v.url()),
+      DUMMY_API_KEY: v.string(),
     },
     shared: {
       NODE_ENV: v.union([v.literal("development"), v.literal("production")]),
@@ -23,8 +23,8 @@ export const env = createEnv({
   values: {
     NEXT_PUBLIC_SITE_NAME: process.env.NEXT_PUBLIC_SITE_NAME,
     NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
-    API_URL: process.env.API_URL,
-    API_KEY: process.env.API_KEY,
+    DUMMY_API_URL: process.env.DUMMY_API_URL,
+    DUMMY_API_KEY: process.env.DUMMY_API_KEY,
     NODE_ENV: process.env.NODE_ENV,
     VERCEL_ENV: process.env.VERCEL_ENV,
   },
