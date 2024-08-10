@@ -8,6 +8,7 @@ const withNextra = nextra({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export",
+  basePath: "/valibot-env",
   images: { unoptimized: true },
 };
 
