@@ -83,11 +83,12 @@ export function createEnv<
   } catch (error) {
     if (v.isValiError(error)) {
       const invalidPaths = error.issues
-        .map((issue) => v.getDotPath(issue))
-        .join(", ");
+        .map((issue) => "\t" + [v.getDotPath(issue), issue.message].join(": "))
+        .join("\n");
 
       throw new Error(
-        `[valibot-env] Invalid environment variable values detected. Please check the following variables: ${invalidPaths}`,
+        `[valibot-env] Invalid environment variable values detected. Please check the following variables:
+${invalidPaths}`,
         { cause: error },
       );
     }
