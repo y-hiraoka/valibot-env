@@ -1,6 +1,6 @@
-import { createEnv } from ".";
 import { describe, it, expect } from "vitest";
 import * as v from "valibot";
+import { createEnv } from ".";
 
 describe("createEnv", () => {
   it("should create public env", () => {

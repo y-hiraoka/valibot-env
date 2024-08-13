@@ -4,7 +4,7 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "lint": "turbo lint",
+    "lint": "turbo lint tsc",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "test": "vitest",
     "changeset": "changeset",
@@ -13,7 +13,13 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.7",
-    "prettier": "^3.2.5",
+    "@typescript-eslint/eslint-plugin": "^8.1.0",
+    "@typescript-eslint/parser": "^8.1.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.5",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "prettier": "^3.3.3",
     "tsup": "^8.2.4",
     "turbo": "^2.0.12",
     "typescript": "^5.5.4",

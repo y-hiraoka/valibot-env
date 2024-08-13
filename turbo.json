@@ -3,12 +3,35 @@
   "ui": "tui",
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env*"
+      ],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**"
+      ],
+      "cache": false,
+      "env": [
+        "NEXT_PUBLIC_SITE_NAME",
+        "NEXT_PUBLIC_SITE_URL",
+        "DUMMY_API_URL",
+        "DUMMY_API_KEY",
+        "VERCEL_ENV"
+      ]
     },
     "lint": {
-      "dependsOn": ["^lint"]
+      "dependsOn": [
+        "^lint"
+      ]
+    },
+    "tsc": {
+      "dependsOn": [
+        "^tsc"
+      ]
     },
     "dev": {
       "cache": false,

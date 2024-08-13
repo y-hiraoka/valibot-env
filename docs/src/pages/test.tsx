@@ -1,14 +1,20 @@
 import { FC } from "react";
 import { env } from "../env";
-import { InferGetStaticPropsType } from "next";
+import { GetStaticProps } from "next";
 
-export const getStaticProps = async () => {
+type Props = {
+  env: typeof env;
+};
+
+export const getStaticProps: GetStaticProps<Props> = () => {
   return {
-    props: env,
+    props: {
+      env,
+    },
   };
 };
 
-const Page: FC<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
+const Page: FC<Props> = (props) => {
   return <pre>{JSON.stringify(props, null, 2)}</pre>;
 };
 

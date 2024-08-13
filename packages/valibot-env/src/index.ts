@@ -79,7 +79,11 @@ export function createEnv<
   }
 
   try {
-    return v.parse(v.object(schemaRecord), args.values) as any;
+    return v.parse(v.object(schemaRecord), args.values) as CreatedEnv<
+      PublicSchemaRecord,
+      PrivateSchemaRecord,
+      SharedSchemaRecord
+    >;
   } catch (error) {
     if (v.isValiError(error)) {
       const invalidPaths = error.issues

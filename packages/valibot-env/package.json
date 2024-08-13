@@ -19,7 +19,9 @@
   ],
   "scripts": {
     "build": "tsup --clean",
-    "dev": "tsup --watch"
+    "dev": "tsup --watch",
+    "lint": "eslint .",
+    "tsc": "tsc --noEmit"
   },
   "main": "dist/index.js",
   "exports": {

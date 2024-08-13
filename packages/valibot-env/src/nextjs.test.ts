@@ -1,6 +1,6 @@
-import { createEnv } from "./nextjs";
 import { describe, expect, it } from "vitest";
 import * as v from "valibot";
+import { createEnv } from "./nextjs";
 
 describe("createEnv for Next.js", () => {
   it("should create variables for public env", () => {
