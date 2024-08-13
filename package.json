@@ -6,6 +6,7 @@
     "dev": "turbo dev",
     "lint": "turbo lint tsc",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "prettier": "prettier .",
     "test": "vitest",
     "changeset": "changeset",
     "prepublish": "turbo build --filter='./packages/*'",
