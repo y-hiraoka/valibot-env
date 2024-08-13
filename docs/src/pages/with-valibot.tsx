@@ -1,7 +1,8 @@
+import { FC } from "react";
 import { createEnv } from "valibot-env/nextjs";
 import * as v from "valibot";
 
-export const env = createEnv({
+const env = createEnv({
   schema: {
     public: {
       NEXT_PUBLIC_SITE_URL: v.pipe(v.string(), v.url()),
@@ -29,3 +30,9 @@ export const env = createEnv({
     VERCEL_ENV: process.env.VERCEL_ENV,
   },
 });
+
+const Page: FC = () => {
+  return <pre>{JSON.stringify(env, null, 2)}</pre>;
+};
+
+export default Page;
