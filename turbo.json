@@ -3,17 +3,9 @@
   "ui": "tui",
   "tasks": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "$TURBO_DEFAULT$",
-        ".env*"
-      ],
-      "outputs": [
-        ".next/**",
-        "!.next/cache/**"
-      ],
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": [".next/**", "!.next/cache/**"],
       "cache": false,
       "env": [
         "NEXT_PUBLIC_SITE_NAME",
@@ -24,14 +16,10 @@
       ]
     },
     "lint": {
-      "dependsOn": [
-        "^lint"
-      ]
+      "dependsOn": ["^lint"]
     },
     "tsc": {
-      "dependsOn": [
-        "^tsc"
-      ]
+      "dependsOn": ["^tsc"]
     },
     "dev": {
       "cache": false,
