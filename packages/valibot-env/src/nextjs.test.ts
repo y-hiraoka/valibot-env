@@ -63,4 +63,31 @@ describe("createEnv for Next.js", () => {
       NODE_ENV: "development",
     });
   });
+
+  describe("test types", () => {
+    it("should pass type check", () => {
+      expect(() => {
+        createEnv({
+          schema: {
+            public: {
+              NEXT_PUBLIC_VALUE_IN_PUBLIC: v.string(),
+              // @ts-expect-error should not allow non-prefixed value
+              WITHOUT_PREFIX_VALUE_IN_PUBLIC: v.string(),
+            },
+            private: {
+              WITHOUT_PREFIX_VALUE_IN_PRIVATE: v.string(),
+              // @ts-expect-error should not allow public value in private schema
+              NEXT_PUBLIC_VALUE_IN_PRIVATE: v.string(),
+            },
+          },
+          // @ts-expect-error should not allow missing value
+          values: {
+            NEXT_PUBLIC_VALUE_IN_PUBLIC: "value",
+            NEXT_PUBLIC_VALUE_IN_PRIVATE: "value",
+            WITHOUT_PREFIX_VALUE_IN_PUBLIC: "value",
+          },
+        });
+      }).toThrowError();
+    });
+  });
 });

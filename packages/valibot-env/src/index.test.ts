@@ -187,4 +187,32 @@ describe("createEnv", () => {
       });
     }).toThrowError();
   });
+
+  describe("test types", () => {
+    it("should pass type check", () => {
+      expect(() => {
+        createEnv({
+          publicPrefix: "PUBLIC_",
+          privatePrefix: "PRIVATE_",
+          schema: {
+            private: {
+              PRIVATE_VALUE_IN_PRIVATE: v.string(),
+              // @ts-expect-error should not allow public value in private schema
+              PUBLIC_VALUE_IN_PRIVATE: v.string(),
+              // @ts-expect-error should not allow non-prefixed value
+              WITHOUT_PREFIX_VALUE: v.string(),
+            },
+            public: {
+              PUBLIC_VALUE_IN_PUBLIC: v.string(),
+              // @ts-expect-error should not allow private value in public schema
+              PRIVATE_VALUE_IN_PUBLIC: v.string(),
+              // @ts-expect-error should not allow non-prefixed value
+              WITHOUT_PREFIX_VALUE: v.string(),
+            },
+          },
+          values: {},
+        });
+      });
+    });
+  });
 });
