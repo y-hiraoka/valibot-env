@@ -1,5 +1,11 @@
 # valibot-env
 
+## 0.1.0
+
+### Minor Changes
+
+- 5f6a415: improve type definitions.
+
 ## 0.0.3
 
 ### Patch Changes
