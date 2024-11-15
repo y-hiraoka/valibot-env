@@ -29,6 +29,6 @@
     "./nextjs": "./dist/nextjs.js"
   },
   "peerDependencies": {
-    "valibot": "^0.37.0"
+    "valibot": "^1.0.0-beta.3"
   }
 }
