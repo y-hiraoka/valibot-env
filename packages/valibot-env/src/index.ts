@@ -5,7 +5,7 @@ import type {
   PublicSchemaRecord,
   RequiredAtLeastOne,
   SchemaRecord,
-} from "./types";
+} from "./types.js";
 
 export type CreateEnvArgs<
   TPublicPrefix extends string | undefined,
