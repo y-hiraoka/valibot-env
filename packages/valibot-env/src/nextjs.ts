@@ -4,8 +4,8 @@ import type {
   PublicSchemaRecord,
   RequiredAtLeastOne,
   SchemaRecord,
-} from "./types";
-import { createEnv as createEnvCore } from ".";
+} from "./types.js";
+import { createEnv as createEnvCore } from "./index.js";
 
 type CreateEnvArgs<
   TPublicSchemaRecord extends SchemaRecord = {},
