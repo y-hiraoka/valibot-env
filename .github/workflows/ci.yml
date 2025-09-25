@@ -14,19 +14,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: npm
+          node-version: 22
+          cache: pnpm
 
-      - run: npm ci
+      - run: pnpm install --frozen-lockfile
 
       - name: run lint
-        run: npm run lint
+        run: pnpm run lint
 
       - name: run test
-        run: npm run test
+        run: pnpm run test
 
       - name: Prettier
-        run: npm run prettier -- -l
+        run: pnpm run prettier -l

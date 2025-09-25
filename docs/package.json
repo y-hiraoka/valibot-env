@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "tsc": "tsc --noEmit",
-    "analyze": "ANALYZE=true npm run build"
+    "analyze": "ANALYZE=true pnpm run build"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^14.2.5",
