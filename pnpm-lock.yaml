@@ -69,11 +69,11 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
       valibot:
-        specifier: ^1.0.0-beta.3
-        version: 1.0.0-beta.3(typescript@5.5.4)
+        specifier: ^1.1.0
+        version: 1.1.0(typescript@5.5.4)
       valibot-env:
-        specifier: '*'
-        version: 0.2.1(valibot@1.0.0-beta.3(typescript@5.5.4))
+        specifier: workspace:*
+        version: link:../packages/valibot-env
       zod:
         specifier: ^3.23.8
         version: 3.23.8
@@ -91,8 +91,8 @@ importers:
   packages/valibot-env:
     dependencies:
       valibot:
-        specifier: ^1.0.0-beta.3
-        version: 1.0.0-beta.3(typescript@5.5.4)
+        specifier: ^1.0.0
+        version: 1.1.0(typescript@5.5.4)
 
 packages:
 
@@ -3548,13 +3548,8 @@ packages:
     engines: {node: '>=8'}
     hasBin: true
 
-  valibot-env@0.2.1:
-    resolution: {integrity: sha512-XuYSwiGuuSeaaMYl+j5qJuvKO+ZcbC24XJoyNXTZjVmsdPmGRrJfpP7LPLZtpBCG/T2RP/eIaQnaE6QCoDiU1Q==}
-    peerDependencies:
-      valibot: ^1.0.0-beta.3
-
-  valibot@1.0.0-beta.3:
-    resolution: {integrity: sha512-PRknKVj2249cF8Pxqil1dahkVHgyaPDq++Y8sA96R5lx4nYnVazs11kefOsRVD3PSygYJG5q2MEdEm7kuSWa+g==}
+  valibot@1.1.0:
+    resolution: {integrity: sha512-Nk8lX30Qhu+9txPYTwM0cFlWLdPFsFr6LblzqIySfbZph9+BFsAHsNvHOymEviUepeIW6KFHzpX8TKhbptBXXw==}
     peerDependencies:
       typescript: '>=5'
     peerDependenciesMeta:
@@ -7900,11 +7895,7 @@ snapshots:
       kleur: 4.1.5
       sade: 1.8.1
 
-  valibot-env@0.2.1(valibot@1.0.0-beta.3(typescript@5.5.4)):
-    dependencies:
-      valibot: 1.0.0-beta.3(typescript@5.5.4)
-
-  valibot@1.0.0-beta.3(typescript@5.5.4):
+  valibot@1.1.0(typescript@5.5.4):
     optionalDependencies:
       typescript: 5.5.4
 
