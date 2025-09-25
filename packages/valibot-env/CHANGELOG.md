@@ -1,5 +1,11 @@
 # valibot-env
 
+## 1.0.0
+
+### Major Changes
+
+- 99632f4: update valibot and release major version.
+
 ## 0.2.1
 
 ### Patch Changes
